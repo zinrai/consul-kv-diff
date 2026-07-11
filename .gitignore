@@ -1,2 +1,3 @@
-consul-kv-diff
+/consul-kv-diff
+/consul
 *.json
