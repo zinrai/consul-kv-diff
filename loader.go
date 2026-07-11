@@ -50,16 +50,29 @@ func LoadConsulKV(addr, datacenter, prefix string) (map[string]string, error) {
 		url = fmt.Sprintf("%s/v1/kv/?recurse", addr)
 	}
 
-	// Add datacenter parameter if specified
-	if datacenter != "" && datacenter != "dc1" {
+	// Add datacenter parameter only when explicitly set. When empty,
+	// Consul falls back to the agent's own datacenter.
+	if datacenter != "" {
 		url = fmt.Sprintf("%s&dc=%s", url, datacenter)
+	}
+
+	req, err := http.NewRequest(http.MethodGet, url, nil)
+	if err != nil {
+		return nil, fmt.Errorf("failed to build request: %w", err)
+	}
+
+	// Pass the ACL token via header, sourced from the environment so it
+	// does not leak into process listings or shell history. This matches
+	// the CONSUL_HTTP_TOKEN convention of the consul CLI.
+	if token := os.Getenv("CONSUL_HTTP_TOKEN"); token != "" {
+		req.Header.Set("X-Consul-Token", token)
 	}
 
 	client := &http.Client{
 		Timeout: 30 * time.Second,
 	}
 
-	resp, err := client.Get(url)
+	resp, err := client.Do(req)
 	if err != nil {
 		return nil, fmt.Errorf("failed to execute request: %w", err)
 	}
