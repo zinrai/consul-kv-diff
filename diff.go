@@ -4,6 +4,7 @@ package main
 type DiffResult struct {
 	Modified     []ModifiedKey
 	OnlyInConsul []string
+	OnlyInLocal  []string
 }
 
 // ModifiedKey represents information about a modified key
@@ -18,18 +19,23 @@ func Compare(local, consul map[string]string) *DiffResult {
 	result := &DiffResult{
 		Modified:     []ModifiedKey{},
 		OnlyInConsul: []string{},
+		OnlyInLocal:  []string{},
 	}
 
-	// Compare values for keys that exist locally
+	// Compare values for keys that exist locally, and detect keys
+	// that are managed locally but missing from Consul.
 	for key, localValue := range local {
-		if consulValue, exists := consul[key]; exists {
-			if localValue != consulValue {
-				result.Modified = append(result.Modified, ModifiedKey{
-					Key:      key,
-					OldValue: localValue,
-					NewValue: consulValue,
-				})
-			}
+		consulValue, exists := consul[key]
+		if !exists {
+			result.OnlyInLocal = append(result.OnlyInLocal, key)
+			continue
+		}
+		if localValue != consulValue {
+			result.Modified = append(result.Modified, ModifiedKey{
+				Key:      key,
+				OldValue: localValue,
+				NewValue: consulValue,
+			})
 		}
 	}
 
@@ -45,5 +51,5 @@ func Compare(local, consul map[string]string) *DiffResult {
 
 // HasDifferences returns whether differences exist
 func (d *DiffResult) HasDifferences() bool {
-	return len(d.Modified) > 0 || len(d.OnlyInConsul) > 0
+	return len(d.Modified) > 0 || len(d.OnlyInConsul) > 0 || len(d.OnlyInLocal) > 0
 }

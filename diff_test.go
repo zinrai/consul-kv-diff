@@ -22,6 +22,7 @@ func TestCompare_CoreScenarios(t *testing.T) {
 					{Key: "app/port", OldValue: "ODA4MA==", NewValue: "OTA5MA=="},
 				},
 				OnlyInConsul: []string{},
+				OnlyInLocal:  []string{},
 			},
 		},
 		{
@@ -31,6 +32,17 @@ func TestCompare_CoreScenarios(t *testing.T) {
 			want: DiffResult{
 				Modified:     []ModifiedKey{},
 				OnlyInConsul: []string{"app/debug"},
+				OnlyInLocal:  []string{},
+			},
+		},
+		{
+			name:   "Detects keys only in local",
+			local:  map[string]string{"app/host": "bG9jYWxob3N0", "app/gone": "dmFsdWU="},
+			consul: map[string]string{"app/host": "bG9jYWxob3N0"},
+			want: DiffResult{
+				Modified:     []ModifiedKey{},
+				OnlyInConsul: []string{},
+				OnlyInLocal:  []string{"app/gone"},
 			},
 		},
 		{
@@ -40,17 +52,19 @@ func TestCompare_CoreScenarios(t *testing.T) {
 			want: DiffResult{
 				Modified:     []ModifiedKey{},
 				OnlyInConsul: []string{},
+				OnlyInLocal:  []string{},
 			},
 		},
 		{
-			name:   "Multiple changes and Consul-only keys",
-			local:  map[string]string{"key1": "dmFsdWUx", "key2": "dmFsdWUy"},
+			name:   "Multiple changes across all categories",
+			local:  map[string]string{"key1": "dmFsdWUx", "key2": "dmFsdWUy", "key4": "dmFsdWU0"},
 			consul: map[string]string{"key1": "bmV3MQ==", "key2": "dmFsdWUy", "key3": "dmFsdWUz"},
 			want: DiffResult{
 				Modified: []ModifiedKey{
 					{Key: "key1", OldValue: "dmFsdWUx", NewValue: "bmV3MQ=="},
 				},
 				OnlyInConsul: []string{"key3"},
+				OnlyInLocal:  []string{"key4"},
 			},
 		},
 		{
@@ -60,6 +74,7 @@ func TestCompare_CoreScenarios(t *testing.T) {
 			want: DiffResult{
 				Modified:     []ModifiedKey{},
 				OnlyInConsul: []string{"key1", "key2"},
+				OnlyInLocal:  []string{},
 			},
 		},
 		{
@@ -69,6 +84,7 @@ func TestCompare_CoreScenarios(t *testing.T) {
 			want: DiffResult{
 				Modified:     []ModifiedKey{},
 				OnlyInConsul: []string{},
+				OnlyInLocal:  []string{"key1", "key2"},
 			},
 		},
 	}
@@ -82,12 +98,14 @@ func TestCompare_CoreScenarios(t *testing.T) {
 				return result.Modified[i].Key < result.Modified[j].Key
 			})
 			sort.Strings(result.OnlyInConsul)
+			sort.Strings(result.OnlyInLocal)
 
 			// Also sort expected values
 			sort.Slice(tt.want.Modified, func(i, j int) bool {
 				return tt.want.Modified[i].Key < tt.want.Modified[j].Key
 			})
 			sort.Strings(tt.want.OnlyInConsul)
+			sort.Strings(tt.want.OnlyInLocal)
 
 			if !reflect.DeepEqual(result.Modified, tt.want.Modified) {
 				t.Errorf("Modified keys mismatch\ngot:  %+v\nwant: %+v", result.Modified, tt.want.Modified)
@@ -95,6 +113,10 @@ func TestCompare_CoreScenarios(t *testing.T) {
 
 			if !reflect.DeepEqual(result.OnlyInConsul, tt.want.OnlyInConsul) {
 				t.Errorf("OnlyInConsul keys mismatch\ngot:  %+v\nwant: %+v", result.OnlyInConsul, tt.want.OnlyInConsul)
+			}
+
+			if !reflect.DeepEqual(result.OnlyInLocal, tt.want.OnlyInLocal) {
+				t.Errorf("OnlyInLocal keys mismatch\ngot:  %+v\nwant: %+v", result.OnlyInLocal, tt.want.OnlyInLocal)
 			}
 		})
 	}
@@ -117,6 +139,13 @@ func TestDiffResult_HasDifferences(t *testing.T) {
 			name: "Has Consul-only keys",
 			result: DiffResult{
 				OnlyInConsul: []string{"test"},
+			},
+			want: true,
+		},
+		{
+			name: "Has local-only keys",
+			result: DiffResult{
+				OnlyInLocal: []string{"test"},
 			},
 			want: true,
 		},
