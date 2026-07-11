@@ -1,0 +1,294 @@
+[
+	{
+		"key": "app/version",
+		"value": "djEuMi4w"
+	},
+	{
+		"key": "app/environment",
+		"value": "cHJvZHVjdGlvbg=="
+	},
+	{
+		"key": "app/server/host",
+		"value": "MC4wLjAuMA=="
+	},
+	{
+		"key": "app/server/port",
+		"value": "ODA4MA=="
+	},
+	{
+		"key": "app/server/timeout",
+		"value": "MzBz"
+	},
+	{
+		"key": "app/server/graceful_shutdown",
+		"value": "MzBz"
+	},
+	{
+		"key": "app/logging/level",
+		"value": "d2Fybg=="
+	},
+	{
+		"key": "app/logging/format",
+		"value": "anNvbg=="
+	},
+	{
+		"key": "app/logging/output",
+		"value": "ZmlsZQ=="
+	},
+	{
+		"key": "app/logging/file/compress",
+		"value": "ZmFsc2U="
+	},
+	{
+		"key": "app/logging/file/path",
+		"value": "L3Zhci9sb2cvYXBwL2FwcC5sb2c="
+	},
+	{
+		"key": "app/logging/file/max_size",
+		"value": "MUc="
+	},
+	{
+		"key": "app/logging/file/max_files",
+		"value": "MTAw"
+	},
+	{
+		"key": "app/security/cors/enabled",
+		"value": "dHJ1ZQ=="
+	},
+	{
+		"key": "app/security/cors/origins",
+		"value": "W2h0dHBzOi8vYXBwLmV4YW1wbGUuY29tIGh0dHBzOi8vd3d3LmV4YW1wbGUuY29tXQ=="
+	},
+	{
+		"key": "app/security/csrf/enabled",
+		"value": "dHJ1ZQ=="
+	},
+	{
+		"key": "app/security/csrf/token_length",
+		"value": "MzI="
+	},
+	{
+		"key": "app/api/rate_limit/enabled",
+		"value": "dHJ1ZQ=="
+	},
+	{
+		"key": "app/api/rate_limit/requests_per_minute",
+		"value": "MTAwMA=="
+	},
+	{
+		"key": "app/api/rate_limit/burst",
+		"value": "NTA="
+	},
+	{
+		"key": "app/name",
+		"value": "bXktYXdlc29tZS1hcHA="
+	},
+	{
+		"key": "database/primary/port",
+		"value": "NTQzMg=="
+	},
+	{
+		"key": "database/primary/name",
+		"value": "bXlhcHBfcHJvZA=="
+	},
+	{
+		"key": "database/primary/user",
+		"value": "cHJvZF91c2Vy"
+	},
+	{
+		"key": "database/primary/ssl_mode",
+		"value": "cmVxdWlyZQ=="
+	},
+	{
+		"key": "database/primary/pool/min",
+		"value": "MTA="
+	},
+	{
+		"key": "database/primary/pool/max",
+		"value": "NTA="
+	},
+	{
+		"key": "database/primary/pool/idle_timeout",
+		"value": "OTAwcw=="
+	},
+	{
+		"key": "database/primary/host",
+		"value": "cHJvZC1kYi1wcmltYXJ5LmludGVybmFs"
+	},
+	{
+		"key": "database/read_replica/hosts",
+		"value": "W3Byb2QtZGItcmVhZC0xLmludGVybmFsIHByb2QtZGItcmVhZC0yLmludGVybmFsXQ=="
+	},
+	{
+		"key": "database/read_replica/port",
+		"value": "NTQzMg=="
+	},
+	{
+		"key": "database/read_replica/load_balancing",
+		"value": "cm91bmRfcm9iaW4="
+	},
+	{
+		"key": "database/read_replica/enabled",
+		"value": "dHJ1ZQ=="
+	},
+	{
+		"key": "database/migrations/auto_run",
+		"value": "ZmFsc2U="
+	},
+	{
+		"key": "database/migrations/path",
+		"value": "L21pZ3JhdGlvbnM="
+	},
+	{
+		"key": "database/backup/enabled",
+		"value": "dHJ1ZQ=="
+	},
+	{
+		"key": "database/backup/schedule",
+		"value": "MCAxICogKiAq"
+	},
+	{
+		"key": "database/backup/retention_days",
+		"value": "MzA="
+	},
+	{
+		"key": "database/backup/type",
+		"value": "aW5jcmVtZW50YWw="
+	},
+	{
+		"key": "database/backup/storage",
+		"value": "czM6Ly9iYWNrdXBzL2RhdGFiYXNlLw=="
+	},
+	{
+		"key": "monitoring/slow_query_threshold",
+		"value": "MjBtcw=="
+	},
+	{
+		"key": "monitoring/log_queries",
+		"value": "ZmFsc2U="
+	},
+	{
+		"key": "monitoring/alerts/connection_pool_exhausted",
+		"value": "dHJ1ZQ=="
+	},
+	{
+		"key": "monitoring/alerts/replication_lag_threshold",
+		"value": "NXM="
+	},
+	{
+		"key": "features/new_ui/enabled",
+		"value": "dHJ1ZQ=="
+	},
+	{
+		"key": "features/new_ui/rollout_percentage",
+		"value": "MTAw"
+	},
+	{
+		"key": "features/advanced_search/rollout_percentage",
+		"value": "MTAw"
+	},
+	{
+		"key": "features/advanced_search/enabled",
+		"value": "dHJ1ZQ=="
+	},
+	{
+		"key": "features/payment_v2/enabled",
+		"value": "dHJ1ZQ=="
+	},
+	{
+		"key": "features/payment_v2/rollout_percentage",
+		"value": "MTAw"
+	},
+	{
+		"key": "features/experimental/real_time_analytics",
+		"value": "ZmFsc2U="
+	},
+	{
+		"key": "features/experimental/ai_recommendations",
+		"value": "ZmFsc2U="
+	},
+	{
+		"key": "features/maintenance/enabled",
+		"value": "ZmFsc2U="
+	},
+	{
+		"key": "features/maintenance/message",
+		"value": ""
+	},
+	{
+		"key": "features/kill_switches/disable_email_notifications",
+		"value": "ZmFsc2U="
+	},
+	{
+		"key": "features/kill_switches/disable_background_jobs",
+		"value": "ZmFsc2U="
+	},
+	{
+		"key": "features/kill_switches/disable_third_party_api",
+		"value": "ZmFsc2U="
+	},
+	{
+		"key": "redis/rate_limiting/prefix",
+		"value": "cmF0ZTo="
+	},
+	{
+		"key": "redis/rate_limiting/window",
+		"value": "NjBz"
+	},
+	{
+		"key": "redis/cluster/enabled",
+		"value": "dHJ1ZQ=="
+	},
+	{
+		"key": "redis/cluster/nodes",
+		"value": "W3JlZGlzLTEuaW50ZXJuYWw6NjM3OSByZWRpcy0yLmludGVybmFsOjYzNzkgcmVkaXMtMy5pbnRlcm5hbDo2Mzc5XQ=="
+	},
+	{
+		"key": "redis/connection/min_idle_conns",
+		"value": "MTA="
+	},
+	{
+		"key": "redis/connection/timeout",
+		"value": "NXM="
+	},
+	{
+		"key": "redis/connection/max_retries",
+		"value": "Mw=="
+	},
+	{
+		"key": "redis/connection/pool_size",
+		"value": "MTAw"
+	},
+	{
+		"key": "redis/sentinel/enabled",
+		"value": "dHJ1ZQ=="
+	},
+	{
+		"key": "redis/sentinel/master_name",
+		"value": "bXlhcHAtbWFzdGVy"
+	},
+	{
+		"key": "redis/sentinel/sentinels",
+		"value": "W3NlbnRpbmVsLTEuaW50ZXJuYWw6MjYzNzkgc2VudGluZWwtMi5pbnRlcm5hbDoyNjM3OSBzZW50aW5lbC0zLmludGVybmFsOjI2Mzc5XQ=="
+	},
+	{
+		"key": "redis/cache/default_ttl",
+		"value": "MzYwMHM="
+	},
+	{
+		"key": "redis/cache/max_memory",
+		"value": "NGdi"
+	},
+	{
+		"key": "redis/cache/eviction_policy",
+		"value": "YWxsa2V5cy1scnU="
+	},
+	{
+		"key": "redis/session_store/prefix",
+		"value": "c2Vzc2lvbjo="
+	},
+	{
+		"key": "redis/session_store/ttl",
+		"value": "ODY0MDBz"
+	}
+]
