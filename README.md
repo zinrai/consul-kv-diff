@@ -92,7 +92,8 @@ $ consul-kv-diff -local export.json -prefix app/production
 The tool outputs differences to stdout and exits with:
 
 - Exit code 0: No differences found
-- Exit code 1: Differences found or error occurred
+- Exit code 1: Differences found
+- Exit code 2: Error occurred
 
 Values are compared in their exact base64 form. In the output they are decoded for readability, falling back to the base64 form when the value is binary or non-printable.
 

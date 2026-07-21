@@ -54,7 +54,7 @@ func parseFlags() *Config {
 	if cfg.LocalFile == "" {
 		fmt.Fprintf(os.Stderr, "Error: -local flag is required\n\n")
 		flag.Usage()
-		os.Exit(1)
+		os.Exit(2)
 	}
 
 	return cfg
@@ -86,7 +86,7 @@ func main() {
 	// Output results
 	printResult(result)
 
-	// Exit with code 1 if differences found
+	// Exit codes: 0 no differences, 1 differences found, 2 error (see exitWithError).
 	if result.HasDifferences() {
 		os.Exit(1)
 	}
@@ -171,5 +171,5 @@ func isPrintable(b []byte) bool {
 
 func exitWithError(operation string, err error) {
 	fmt.Fprintf(os.Stderr, "Error %s: %v\n", operation, err)
-	os.Exit(1)
+	os.Exit(2)
 }
